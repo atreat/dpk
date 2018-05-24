@@ -28,17 +28,6 @@ public class Session {
         return SessionManager(configuration: configuration)
     }()
 
-    // private let proxyConfig = {
-    //     [:]
-    // //     var proxyConfiguration = [NSObject: AnyObject]()
-    // //     proxyConfiguration[kCFNetworkProxiesHTTPProxy] = "127.0.0.1" as AnyObject?
-    // //     proxyConfiguration[kCFNetworkProxiesHTTPPort] = "8888"
-
-    // //     proxyConfiguration[kCFNetworkProxiesHTTPEnable] = true as AnyObject?
-    // //     proxyConfiguration[kCFStreamPropertyHTTPSProxyHost as String] = "127.0.0.1"
-    // //     proxyConfiguration[kCFStreamPropertyHTTPSProxyPort as String] = "8888"
-    // }()
-
     open static let defaultHTTPHeaders: HTTPHeaders = {
         let acceptEncoding = "gzip;q=1.0, compress;q=0.5"
         let userAgent      = "DevPoop \(DevPoopKit.version)"

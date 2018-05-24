@@ -8,12 +8,21 @@ import DevPoopKit
 let main = command { (username: String, password: String) in
 
     let credential = LoginCredential(username: username, password: password)
-    Session.default.selectedTeamId = "TPTUF752H8"
 
-    let _ = LoginRequest.request(Session.default, credential: credential).response()
+    let session  = Session.default
 
-    let apps = AppRequest.request(Session.default)
-    let response = apps.responseJSON()
+    session.selectedTeamId = "TPTUF752H8"
+
+
+
+    let _ = LoginRequest.request(session, credential: credential).response()
+//    let apps = AppRequest.request(session)
+
+    let teams = AppleTeamRequest.request(session)
+//    print(teams.responseJSON())
+
+    let appDetail = AppRequest.detail(session, appIdentifier: "QLPJ34B39V")
+    print(appDetail.responseJSON())
 }
 
 main.run()
