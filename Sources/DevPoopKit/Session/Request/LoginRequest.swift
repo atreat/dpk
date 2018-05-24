@@ -33,13 +33,11 @@ public class LoginRequest {
         let endpoint = "https://olympus.itunes.apple.com/v1/app/config?hostname=itunesconnect.apple.com"
         let response = Session.default.request(endpoint).responseJSON()
 
-        if let result = response.result.value {
-            let accessKey = (result as! [String: String])["authServiceKey"]
-            return accessKey!
+        if response.result.isSuccess {
+            return (response.result.value as! [String: String])["authServiceKey"]
         } else {
-
+            print("ERROR: Unable to retrieve widget key")
+            return nil
         }
-
-        return nil
     }
 }

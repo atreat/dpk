@@ -16,11 +16,8 @@ public class AppRequest {
                 "pageNumber" : pageNumber,
                 "pageSize"   : pageSize,
                 "sort"       : "name=asc"
-            ],
-            encoding: JSONEncoding.default,
-            headers: [
-                "Content-Type" : "application/json",
             ]
         )
     }
 }
+
