@@ -1,18 +1,31 @@
 import Alamofire
 import AlamofireSynchronous
+import Foundation
 
-public struct LoginCredential {
-    public init(username: String, password: String) {
-        self.username = username
-        self.password = password
+public extension Session {
+    public typealias LoginCompletionHandler = (_ response: HTTPURLResponse?, _ session: Session) -> ()
+
+    /**
+        Begins session with login request and returns it. Can be marked synchronized,
+        if so the completion handler will be called with the response and the session.
+    */
+    public static func login(_ credential: Credential, sync: Bool = false, completion: @escaping LoginCompletionHandler) -> Session {
+        let session = Session()
+        let request = LoginRequest.request(session, credential: credential)
+
+        if sync {
+            let login = request.response()
+            completion(login.response, session)
+        } else {
+            request.response() { login in completion(login.response, session) }
+        }
+
+        return session
     }
-
-    public var username : String
-    public var password : String
 }
 
 public class LoginRequest {
-    public static func request(_ session: Session, credential: LoginCredential) -> DataRequest {
+    public static func request(_ session: Session, credential: Credential) -> DataRequest {
         return session.request(
             "https://idmsa.apple.com/appleauth/auth/signin",
             method: .post,
