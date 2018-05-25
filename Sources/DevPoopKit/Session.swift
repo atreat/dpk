@@ -3,29 +3,9 @@ import Foundation
 
 public class Session {
 
+    // MARK: Static
     open static let `default`: Session = {
         return Session()
-    }()
-
-    public var selectedTeamId: String?
-
-    /// A default instance of `SessionManager`, used by top-level Alamofire request methods, and suitable for use
-    /// directly for any ad hoc requests.
-    private let alamofire: SessionManager = {
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = Session.defaultHTTPHeaders
-
-//        let proxyConfig : [String: AnyObject] = [
-//            kCFNetworkProxiesHTTPProxy      as String  :   "127.0.0.1" as AnyObject,
-//            kCFNetworkProxiesHTTPPort       as String  :   "8888" as AnyObject,
-//            kCFNetworkProxiesHTTPEnable     as String  :   true as AnyObject,
-//            kCFStreamPropertyHTTPSProxyHost as String  :   "127.0.0.1" as AnyObject,
-//            kCFStreamPropertyHTTPSProxyPort as String  :   "8888" as AnyObject,
-//        ]
-//
-//        configuration.connectionProxyDictionary = proxyConfig
-
-        return SessionManager(configuration: configuration)
     }()
 
     open static let defaultHTTPHeaders: HTTPHeaders = {
@@ -38,19 +18,27 @@ public class Session {
         ]
     }()
 
+    // MARK: - Instance
+    public var selectedTeamId: String?
 
-    // MARK: - Data Request
+    // MARK: - Alamofire
+    private let alamofire: SessionManager = {
+        let configuration = URLSessionConfiguration.default
+        configuration.httpAdditionalHeaders = Session.defaultHTTPHeaders
 
-    /// Creates a `DataRequest` using the default `SessionManager` to retrieve the contents of the specified `url`,
-    /// `method`, `parameters`, `encoding` and `headers`.
-    ///
-    /// - parameter url:        The URL.
-    /// - parameter method:     The HTTP method. `.get` by default.
-    /// - parameter parameters: The parameters. `nil` by default.
-    /// - parameter encoding:   The parameter encoding. `URLEncoding.default` by default.
-    /// - parameter headers:    The HTTP headers. `nil` by default.
-    ///
-    /// - returns: The created `DataRequest`.
+        //        let proxyConfig : [String: AnyObject] = [
+        //            kCFNetworkProxiesHTTPProxy      as String  :   "127.0.0.1" as AnyObject,
+        //            kCFNetworkProxiesHTTPPort       as String  :   "8888" as AnyObject,
+        //            kCFNetworkProxiesHTTPEnable     as String  :   true as AnyObject,
+        //            kCFStreamPropertyHTTPSProxyHost as String  :   "127.0.0.1" as AnyObject,
+        //            kCFStreamPropertyHTTPSProxyPort as String  :   "8888" as AnyObject,
+        //        ]
+        //
+        //        configuration.connectionProxyDictionary = proxyConfig
+
+        return SessionManager(configuration: configuration)
+    }()
+
     @discardableResult
     public func request(
         _ url: URLConvertible,
@@ -68,5 +56,4 @@ public class Session {
             headers: headers
         )
     }
-
 }

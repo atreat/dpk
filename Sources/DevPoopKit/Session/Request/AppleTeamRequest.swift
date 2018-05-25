@@ -2,10 +2,13 @@ import Alamofire
 import AlamofireSynchronous
 
 public class AppleTeamRequest {
-    public static func request(_ session: Session) -> DataRequest {
 
+    open static let base = "https://developer.apple.com/services-account/"
+    open static let versionPath = "QH65B2"
+
+    public static func all(_ session: Session) -> DataRequest {
         return session.request(
-            "https://developer.apple.com/services-account/QH65B2/account/listTeams.action",
+            "\(base)\(versionPath)/account/listTeams.action",
             method: .post
         )
     }
