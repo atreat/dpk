@@ -12,7 +12,7 @@ public class AppRequest {
         let pageSize   = 500
 
         return session.request(
-            "\(base)\(versionPath)/account/\(platform)/identifiers/listAppIds.action",
+            "\(base)\(session.configuration.apiVersion)/account/\(session.configuration.platform)/identifiers/listAppIds.action",
             method: .post,
             parameters: [
                 "teamId"     : session.selectedTeamId!,
@@ -25,7 +25,7 @@ public class AppRequest {
 
     public static func show(_ session: Session, appIdentifier: String) -> DataRequest {
         return session.request(
-            "\(base)\(versionPath)/account/\(platform)/identifiers/getAppIdDetail.action",
+            "\(base)\(session.configuration.apiVersion)/account/\(session.configuration.platform)/identifiers/getAppIdDetail.action",
             method: .post,
             parameters: [
                 "teamId"     : session.selectedTeamId!,
@@ -36,7 +36,7 @@ public class AppRequest {
 
     public static func create(_ session: Session, appIdentifier: String, name: String) -> DataRequest {
         return session.request(
-            "\(base)\(versionPath)/account/\(platform)/identifiers/getAppIdDetail.action",
+            "\(base)\(session.configuration.apiVersion)/account/\(session.configuration.platform)/identifiers/getAppIdDetail.action",
             method: .post,
             parameters: [
                 "teamId"     : session.selectedTeamId!,
@@ -47,7 +47,7 @@ public class AppRequest {
 
     public static func update(_ session: Session, appIdentifier: String, name: String) -> DataRequest {
         return session.request(
-            "\(base)\(versionPath)/account/\(platform)/identifiers/updateAppIdName.action",
+            "\(base)\(session.configuration.apiVersion)/account/\(session.configuration.platform)/identifiers/updateAppIdName.action",
             method: .post,
             parameters: [
                 "teamId"     : session.selectedTeamId!,
@@ -59,7 +59,7 @@ public class AppRequest {
 
     public static func delete(_ session: Session, appIdentifier: String, name: String) -> DataRequest {
         return session.request(
-            "\(base)\(versionPath)/account/\(platform)/identifiers/deleteAppId.action",
+            "\(base)\(session.configuration.apiVersion)/account/\(session.configuration.platform)/identifiers/deleteAppId.action",
             method: .post,
             parameters: [
                 "teamId"     : session.selectedTeamId!,

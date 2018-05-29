@@ -28,7 +28,7 @@ public class DeviceRequest {
         if deviceClass != nil { parameters["deviceClass"] = deviceClass }
 
         return session.request(
-            "\(base)\(versionPath)/account/\(platform)/device/listDevices.action",
+            "\(base)\(session.configuration.apiVersion)/account/\(session.configuration.platform)/device/listDevices.action",
             method: .post,
             parameters: parameters
         )
@@ -36,7 +36,7 @@ public class DeviceRequest {
 
     public static func create(_ session: Session, descriptor: DeviceDescriptor) -> DataRequest {
         return session.request(
-            "\(base)\(versionPath)/account/\(platform)/device/listDevices.action",
+            "\(base)\(session.configuration.apiVersion)/account/\(session.configuration.platform)/device/listDevices.action",
             method: .post,
             parameters: [
                 "teamId"                : session.selectedTeamId!,
@@ -49,7 +49,7 @@ public class DeviceRequest {
 
     public static func disable(_ session: Session, deviceId: String) -> DataRequest {
         return session.request(
-            "\(base)\(versionPath)/account/\(platform)/device/deleteDevice.action",
+            "\(base)\(session.configuration.apiVersion)/account/\(session.configuration.platform)/device/deleteDevice.action",
             method: .post,
             parameters: [
                 "teamId"                : session.selectedTeamId!,
@@ -60,7 +60,7 @@ public class DeviceRequest {
 
     public static func enable(_ session: Session, deviceId: String, deviceUDID: String) -> DataRequest {
         return session.request(
-            "\(base)\(versionPath)/account/\(platform)/device/enableDevice.action",
+            "\(base)\(session.configuration.apiVersion)/account/\(session.configuration.platform)/device/enableDevice.action",
             method: .post,
             parameters: [
                 "teamId"                 : session.selectedTeamId!,

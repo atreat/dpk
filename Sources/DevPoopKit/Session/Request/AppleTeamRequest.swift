@@ -8,7 +8,7 @@ public class AppleTeamRequest {
 
     public static func all(_ session: Session) -> DataRequest {
         return session.request(
-            "\(base)\(versionPath)/account/listTeams.action",
+            "\(base)\(session.configuration.apiVersion)/account/listTeams.action",
             method: .post
         )
     }

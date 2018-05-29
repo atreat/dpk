@@ -19,7 +19,17 @@ public class Session {
     }()
 
     // MARK: - Instance
-    public var selectedTeamId: String?
+
+    public var configuration = Configuration(
+        platform: .ios,
+        apiVersion: "QH65B2",
+        teamId: nil
+    )
+
+    public var selectedTeamId: String? {
+        get { return configuration.teamId }
+        set(team) { configuration.teamId = team }
+    }
 
     // MARK: - Alamofire
     private let alamofire: SessionManager = {
