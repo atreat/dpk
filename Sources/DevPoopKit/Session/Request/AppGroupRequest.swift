@@ -3,6 +3,8 @@ import Foundation
 
 public class AppGroupRequest {
 
+    open static let base = "https://developer.apple.com/services-account/"
+
     public static func all(_ session: Session) -> DataRequest {
         let pageNumber = 1
         let pageSize   = 500

@@ -4,8 +4,6 @@ import AlamofireSynchronous
 public class AppRequest {
 
     open static let base = "https://developer.apple.com/services-account/"
-    open static let versionPath = "QH65B2"
-    open static let platform = "ios"
 
     public static func all(_ session: Session) -> DataRequest {
         let pageNumber = 1
