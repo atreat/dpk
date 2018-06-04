@@ -36,7 +36,7 @@ public class LoginRequest {
             ],
             encoding: JSONEncoding.default,
             headers: [
-                "X-Apple-Widget-Key" : retrieveWidgetKey()!,
+                "X-Apple-Widget-Key" : retrieveWidgetKey() ?? "",
                 "Content-Type" : "application/json",
             ]
         )

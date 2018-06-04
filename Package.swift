@@ -38,10 +38,14 @@ let package = Package(
             name: "DevPoopKit",
             dependencies: [
                 "Alamofire",
-                "Commander",
+                "AlamofireSynchronous",
             ]),
         .testTarget(
-            name: "DevPoopTests",
-            dependencies: ["DevPoop"]),
+            name: "DevPoopKitTests",
+            dependencies: [
+                "DevPoopKit",
+                "Alamofire",
+                "AlamofireSynchronous"
+            ]),
     ]
 )

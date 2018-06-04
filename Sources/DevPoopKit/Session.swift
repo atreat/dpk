@@ -20,11 +20,7 @@ public class Session {
 
     // MARK: - Instance
 
-    public var configuration = Configuration(
-        platform: .ios,
-        apiVersion: "QH65B2",
-        teamId: nil
-    )
+    public var configuration = Configuration.default
 
     public var selectedTeamId: String? {
         get { return configuration.teamId }
