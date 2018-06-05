@@ -1,7 +1,7 @@
 import Alamofire
 import AlamofireSynchronous
 
-public class AppleTeamRequest {
+public class TeamRequest {
 
     public static let base = "https://developer.apple.com/services-account/"
     public static let versionPath = "QH65B2"

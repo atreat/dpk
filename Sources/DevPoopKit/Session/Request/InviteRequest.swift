@@ -2,12 +2,6 @@ import Alamofire
 import Foundation
 
 public class InviteRequest {
-    public enum TeamMemberRole : String {
-        case member = "MEMBER"
-        case admin  = "ADMIN"
-        case agent  = "AGENT"
-    }
-
     public struct InviteDescriptor {
         let email : String
         let role  : TeamMemberRole
