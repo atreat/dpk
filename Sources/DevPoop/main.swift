@@ -7,22 +7,34 @@ import DevPoopKit
 
 let main = command { (username: String, password: String) in
 
-    let credential = LoginCredential(username: username, password: password)
+    let credential = Credential(username: username, password: password)
 
-    let session  = Session.default
+    // let session  = Session.default
+    // let _ = LoginRequest.request(session, credential: credential).response()
 
-    session.selectedTeamId = "TPTUF752H8"
+    let session = Session.login(credential, sync: true) { response, session in
+//        print("Login completion handled: \(String(describing: response))")
+    }
 
-
-
-    let _ = LoginRequest.request(session, credential: credential).response()
-//    let apps = AppRequest.request(session)
-
-    let teams = AppleTeamRequest.request(session)
+    /// Teams
+//    let teams = AppleTeamRequest.request(session)
 //    print(teams.responseJSON())
 
-    let appDetail = AppRequest.detail(session, appIdentifier: "QLPJ34B39V")
-    print(appDetail.responseJSON())
+    /// All Apps
+    let apps = AppRequest.all(session)
+    print(apps.responseJSON())
+
+    /// App Detail
+//    let appDetail = AppRequest.show(session, appIdentifier: "QLPJ34B39V")
+//    print(appDetail.responseJSON())
+
+    /// Devices
+//    let devices = DeviceRequest.all(session)
+//    print(devices.responseJSON())
+
+    /// Invites
+    let invites = InviteRequest.all(session)
+    print(invites.responseJSON())
 }
 
 main.run()
