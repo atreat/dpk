@@ -9,9 +9,7 @@ public class DeviceRequest {
         let deviceName: String
     }
 
-    open static let base = "https://developer.apple.com/services-account/"
-    open static let versionPath = "QH65B2"
-    open static let platform = "ios"
+    static let base = "https://developer.apple.com/services-account/"
 
     public static func all(_ session: Session, includeDisabled: Bool = false, deviceClass: String? = nil) -> DataRequest {
         let pageNumber = 1
