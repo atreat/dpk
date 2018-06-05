@@ -4,11 +4,11 @@ import Foundation
 public class Session {
 
     // MARK: Static
-    open static let `default`: Session = {
+    static let `default`: Session = {
         return Session()
     }()
 
-    open static let defaultHTTPHeaders: HTTPHeaders = {
+    static let defaultHTTPHeaders: HTTPHeaders = {
         let acceptEncoding = "gzip;q=1.0, compress;q=0.5"
         let userAgent      = "DevPoop \(DevPoopKit.version)"
 
