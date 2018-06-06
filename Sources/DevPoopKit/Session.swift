@@ -32,15 +32,18 @@ public class Session {
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = Session.defaultHTTPHeaders
 
-        //        let proxyConfig : [String: AnyObject] = [
-        //            kCFNetworkProxiesHTTPProxy      as String  :   "127.0.0.1" as AnyObject,
-        //            kCFNetworkProxiesHTTPPort       as String  :   "8888" as AnyObject,
-        //            kCFNetworkProxiesHTTPEnable     as String  :   true as AnyObject,
-        //            kCFStreamPropertyHTTPSProxyHost as String  :   "127.0.0.1" as AnyObject,
-        //            kCFStreamPropertyHTTPSProxyPort as String  :   "8888" as AnyObject,
-        //        ]
-        //
-        //        configuration.connectionProxyDictionary = proxyConfig
+//        let proxyHost = "127.0.0.1"
+//        let proxyPort = 8888
+//        let proxyConfig : [AnyHashable : Any] = [
+//            kCFNetworkProxiesHTTPEnable: true,
+//            kCFNetworkProxiesHTTPProxy: proxyHost,
+//            kCFNetworkProxiesHTTPPort: proxyPort,
+//            kCFNetworkProxiesHTTPSEnable: true,
+//            kCFNetworkProxiesHTTPSProxy: proxyHost,
+//            kCFNetworkProxiesHTTPSPort: proxyPort
+//        ]
+//
+//        configuration.connectionProxyDictionary = proxyConfig
 
         return SessionManager(configuration: configuration)
     }()

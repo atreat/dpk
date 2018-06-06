@@ -43,6 +43,7 @@ public class InviteRequest {
                 "Content-Type" : "application/json",
             ]
         )
+
     }
 
     public static func delete(_ session: Session, inviteIdentifiers: [String]) -> DataRequest {
@@ -59,5 +60,4 @@ public class InviteRequest {
             ]
         )
     }
-
 }
