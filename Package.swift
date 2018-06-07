@@ -44,8 +44,6 @@ let package = Package(
             name: "DevPoopKitTests",
             dependencies: [
                 "DevPoopKit",
-                "Alamofire",
-                "AlamofireSynchronous"
             ]),
     ]
 )
