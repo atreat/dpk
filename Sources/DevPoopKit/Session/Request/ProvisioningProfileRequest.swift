@@ -32,6 +32,21 @@ public class ProvisioningProfileRequest {
         )
     }
 
+    /// Response is a property list
+    public static func allDetails(_ session: Session) -> DataRequest {
+        let base = "https://developerservices2.apple.com/services/"
+        return session.request(
+            "\(base)\(session.configuration.apiVersion)/\(session.configuration.platform)/listProvisioningProfiles.action",
+            method: .post,
+            parameters: [
+                "teamId"                  : session.selectedTeamId!,
+                "includeInactiveProfiles" : true,
+                "onlyCountLists"          : true
+            ],
+            encoding: URLEncoding(destination: .queryString)
+        )
+    }
+
     public static func show(_ session: Session, profileIdentifier: String) -> DataRequest {
         return session.request(
             "\(base)\(session.configuration.apiVersion)/account/\(session.configuration.platform)/profile/getProvisioningProfile.action",
